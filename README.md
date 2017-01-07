@@ -16,3 +16,6 @@ Radial basis function network for Character Recognition.
 ##Result Image
 ![Result Image](https://github.com/underwindfall/recognition-character-RBF-Opencv/blob/master/screen.jpg)
 
+##Copyright and license
+
+Copyright © 2016 Undervoid
