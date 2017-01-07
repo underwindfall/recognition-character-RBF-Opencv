@@ -1,0 +1,1 @@
+/home/pi/sy26_camera/debug/CMakeFiles/Camera.dir

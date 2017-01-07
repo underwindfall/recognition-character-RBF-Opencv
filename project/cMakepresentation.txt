@@ -1,0 +1,1 @@
+CmakeListes.tex -> script de compilation

@@ -1,0 +1,9 @@
+DLLEXP neuroRBF();                        ///< Creates a default and empty neuroRBF.
+DLLEXP virtual ~neuroRBF();                ///< Destructor for objects of the neuroRBF class.
+DLLEXP int getnumCat() const;                    ///< Returns the number of category as a constant.
+DLLEXP unsigned int getvSize() const;            ///< Returns the size of vectors to be classified as a constant.	
+DLLEXP vector<neuroRBFCat> getnetCat() const;    ///< Returns the list of categories as a constant.
+
+//SET 
+DLLEXP int setnumCat();                            ///< Sets the number of category in the neuroRBF automatically by computing the good value.
+DLLEXP unsigned int setvSize();                    ///< Sets the size of vectors that will be categorizes in the neuroRBF automatically by computing the good value.
