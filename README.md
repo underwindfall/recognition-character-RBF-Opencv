@@ -10,7 +10,7 @@ Radial basis function network for Character Recognition.
 *	GPU acceleration is not implemented
 
 ##RBF Interface
-![RBF Interface](https://github.com/underwindfall/recognition-character-RBF-Opencv/blob/master/Radial_funktion_network.svg)
+![RBF Interface](https://github.com/underwindfall/recognition-character-RBF-Opencv/blob/master/svg.jpg)
 
 ##Result Image
 ![Result Image](https://github.com/underwindfall/recognition-character-RBF-Opencv/blob/master/screen.jpg)
