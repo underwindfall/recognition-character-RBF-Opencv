@@ -1,3 +1,4 @@
+/// Autor : Xilong WU, Qifan Yang
 #include "opencv2/opencv.hpp"
 #include <raspicam/raspicam_cv.h>
 #include "opencv2/highgui/highgui.hpp"
@@ -10,31 +11,40 @@
 #include <ctype.h>
 #include <string.h>
 #include <GST/classifiers/neuroRBF.h>
+
+//les taille de capture image depuis le caméra
 #define taille_w 640
 #define taille_h 480
+
+//les taille à resize avant de le donner au réseux neuroRBF 
 #define taille_w_resize 64
 #define taille_h_resize 48
 using namespace std;
 using namespace cv;
 using namespace gst;
-
-int thresh = 50;
-int max_thresh = 70;
-RNG rng(12345);
-
+//-------------------------------variable globale--------------------------------------------------------------------
+// matrice origine capturé par caméra, il est en 1 channel
 Mat frame;
+// matrice normalisé en 0 et 1
 Mat normalized_frame;
+// matrice avec la taille compressé
 Mat resized_frame;
 //Mat src_gray;
-neuroRBF rbf;  
-/// Function header
-void thresh_callback(int, void* );
-void learn_image();
-void add_to_categorie(int IDcat);
-int recognise();
-void print_base2txt(vector<int>);
-Mat cut_caractere(Mat);
-vector<float> Mat2vector();
+
+//le réseuxRBF à entrainer
+neuroRBF rbf;
+ //--------------------------------------------------------------------------------------------------------------------
+
+ /// Function header
+void learn_image();               // fonction principale pour recevoir les commande de utilisateur depuis les touche clavier
+void add_to_categorie(int IDcat); // ajoute d'un vector dans une catégorie donnée
+int recognise();                  // fonction de reconnaissance sur l'image actuelle sur l'écran
+void print_base2txt(vector<int>); // fonction de débuggage permettnt de sorie les valeurs du vector donné à fichier base_learning.txt 
+Mat cut_caractere(Mat);			  // fonction permet de trouver le caractère dans l'image puis retourner seulement une Mat avec le zone d'intérêt
+
+
+
+//------------------------------------------fonction principale---------------------------------------------------------
 int main(int narg, char *argv[]) {
 	
     raspicam::RaspiCam_Cv Camera;
@@ -56,6 +66,12 @@ int main(int narg, char *argv[]) {
     printf("Are you ready? Press entre to begin ");
     char str[8];
 	cin.getline(str,8);
+	printf("\n ---------------------If you'd like to use the network saved before please tape 'l'");
+	printf("\n\n\nTape 'shift' + a number --- adding a caracter of number to the network");
+	printf("\nTape a alphaber 'a-f'   --- adding a caracter of alphaber to the network");
+	printf("\nTape 'l' ------------------ trainning the network");
+	printf("\nTape 'r' ------------------ recongizing the actuel image");
+	printf("\n\n ---------------------If you'd like to save the network trained please tape 's'");
 	//rbf.setvSize(76800); 
 	if(strcasecmp("1",str) ==0)
 	{
@@ -64,13 +80,12 @@ int main(int narg, char *argv[]) {
     for(;;) {
 		Camera.grab();
         Camera.retrieve ( frame);
-		blur( frame, frame, Size(3,3) );
+		blur( frame, frame, Size(3,3) ); 			// lisser l'image et élimiler les bruite
 	     /// Canny detector
-	   //Canny( frame, frame, 10,45, 3 );
-	   imshow("camera2",frame);
-	    normalize(frame,normalized_frame,0,1,NORM_MINMAX);
-	   //~ normalize(resized_frame,resized_frame,0,1,NORM_MINMAX);
-	   learn_image();
+	   //Canny( frame, frame, 10,45, 3 );			// tracer le contour de l'image
+	   imshow("camera2",frame);		 				// afficher l'image actuelle
+	   normalize(frame,normalized_frame,0,1,NORM_MINMAX); // normaliser le matrice en 0 et 1
+	   learn_image();										// attendre les commandes de utilisateur
     }
     Camera.release();
     cout << "that's all folk" << endl;
@@ -285,7 +300,7 @@ void learn_image()
 	}
 	if(key == (char)'g'){
 		rbf.restoreneuroRBF("networkBase.txt"); 
-		cout << "resto network from networkBase.txt"<< endl;
+		cout << "\nrebuild the network from networkBase.txt"<< endl;
 	}
 	if(key == (char)'t'){
 		cut_caractere(resized_frame);
@@ -360,7 +375,7 @@ for (int i=1; i<=nbr_cols; ++i){
 	for(int j=1; j<=nbr_line; ++j){
 		if(mat.at<int>(j,i) == 1){
 			//~ cout<<mat.at<int>(j,i)<<endl;
-			nbr_begin_col =(int)(i*3.5);
+			nbr_begin_col =(int)(i*4);
 			//~ cout<<"cols : "<<nbr_begin_col<<endl;
 			find = 1;
 			break;
@@ -374,7 +389,7 @@ for (int i=1; i<=nbr_cols; ++i){
 for (int i=nbr_cols; i>1; --i){
 	for(int j=nbr_line; j>1; --j){
 		if(mat.at<int>(j,i) == 1){
-			nbr_fin_col =(int)(640-((640-i)*3.5));
+			nbr_fin_col =(int)(640-((640-i)*3.3));
 			//~ cout<<"nbr_fin_col : "<<nbr_fin_col<<endl;
 			find = 1;
 			break;
@@ -399,6 +414,7 @@ for (int i=nbr_line; i>1; --i){
 		break;
 	}
 }
+// Rectangle à couper après le détection
 Rect carac(nbr_begin_col,nbr_begin_line,nbr_fin_col-nbr_begin_col,nbr_fin_line-nbr_begin_line);
 Mat image_roi = mat(carac);
 return image_roi;

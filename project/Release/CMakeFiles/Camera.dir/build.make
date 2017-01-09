@@ -35,10 +35,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/pi/sy26_camera
+CMAKE_SOURCE_DIR = /home/pi/Desktop
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/pi/sy26_camera/Release
+CMAKE_BINARY_DIR = /home/pi/Desktop/Release
 
 # Include any dependencies generated for this target.
 include CMakeFiles/Camera.dir/depend.make
@@ -51,17 +51,17 @@ include CMakeFiles/Camera.dir/flags.make
 
 CMakeFiles/Camera.dir/camera.cpp.o: CMakeFiles/Camera.dir/flags.make
 CMakeFiles/Camera.dir/camera.cpp.o: ../camera.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/pi/sy26_camera/Release/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/pi/Desktop/Release/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/Camera.dir/camera.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Camera.dir/camera.cpp.o -c /home/pi/sy26_camera/camera.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Camera.dir/camera.cpp.o -c /home/pi/Desktop/camera.cpp
 
 CMakeFiles/Camera.dir/camera.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Camera.dir/camera.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/pi/sy26_camera/camera.cpp > CMakeFiles/Camera.dir/camera.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/pi/Desktop/camera.cpp > CMakeFiles/Camera.dir/camera.cpp.i
 
 CMakeFiles/Camera.dir/camera.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Camera.dir/camera.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/pi/sy26_camera/camera.cpp -o CMakeFiles/Camera.dir/camera.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/pi/Desktop/camera.cpp -o CMakeFiles/Camera.dir/camera.cpp.s
 
 CMakeFiles/Camera.dir/camera.cpp.o.requires:
 .PHONY : CMakeFiles/Camera.dir/camera.cpp.o.requires
@@ -129,6 +129,6 @@ CMakeFiles/Camera.dir/clean:
 .PHONY : CMakeFiles/Camera.dir/clean
 
 CMakeFiles/Camera.dir/depend:
-	cd /home/pi/sy26_camera/Release && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/pi/sy26_camera /home/pi/sy26_camera /home/pi/sy26_camera/Release /home/pi/sy26_camera/Release /home/pi/sy26_camera/Release/CMakeFiles/Camera.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/pi/Desktop/Release && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/pi/Desktop /home/pi/Desktop /home/pi/Desktop/Release /home/pi/Desktop/Release /home/pi/Desktop/Release/CMakeFiles/Camera.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/Camera.dir/depend
 

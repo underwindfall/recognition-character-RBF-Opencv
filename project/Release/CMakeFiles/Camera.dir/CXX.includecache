@@ -6,15 +6,15 @@
 
 #IncludeRegexTransform: 
 
-/home/pi/sy26_camera/camera.cpp
+/home/pi/Desktop/camera.cpp
 opencv2/opencv.hpp
-/home/pi/sy26_camera/opencv2/opencv.hpp
+/home/pi/Desktop/opencv2/opencv.hpp
 raspicam/raspicam_cv.h
 -
 opencv2/highgui/highgui.hpp
-/home/pi/sy26_camera/opencv2/highgui/highgui.hpp
+/home/pi/Desktop/opencv2/highgui/highgui.hpp
 opencv2/imgproc/imgproc.hpp
-/home/pi/sy26_camera/opencv2/imgproc/imgproc.hpp
+/home/pi/Desktop/opencv2/imgproc/imgproc.hpp
 iostream
 -
 fstream

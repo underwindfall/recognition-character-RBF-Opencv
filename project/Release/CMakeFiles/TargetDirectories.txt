@@ -1,1 +1,1 @@
-/home/pi/sy26_camera/Release/CMakeFiles/Camera.dir
+/home/pi/Desktop/Release/CMakeFiles/Camera.dir

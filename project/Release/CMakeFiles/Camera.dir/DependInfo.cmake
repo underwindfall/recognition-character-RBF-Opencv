@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/pi/sy26_camera/camera.cpp" "/home/pi/sy26_camera/Release/CMakeFiles/Camera.dir/camera.cpp.o"
+  "/home/pi/Desktop/camera.cpp" "/home/pi/Desktop/Release/CMakeFiles/Camera.dir/camera.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
